@@ -42,3 +42,4 @@ The FreedomStudio IDE can be used to download the binary to the target. Start by
 - In tab "Source" noting will normally need to be changed.
 - In tab "Common" nothing will normally need to be changed.
 
+When all is set up you should be able to press the "Apply" and then the "Debug" button. Good Luck!
