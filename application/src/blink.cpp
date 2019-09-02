@@ -45,7 +45,6 @@ int main ()
 	gpio->setAsOutput( Gpio::pin19 );
 	gpio->setAsOutput( Gpio::pin21 );
 	gpio->setAsOutput( Gpio::pin22 );
-	gpio->vEnableRiseIrq( Gpio::pin21 );
 	gpio->set( Gpio::pin19 );
 	gpio->clear( Gpio::pin21 );
 	gpio->set( Gpio::pin22 );
