@@ -67,13 +67,6 @@ void Timer::setUp1MsTimeBase()
 
 void Timer::waitFor1MsTimeOut()
 {
-	static uint32_t* claimRegister = reinterpret_cast<uint32_t*>( 0xc200004 );
-	static uint32_t* pendingRegister1 = reinterpret_cast<uint32_t*>( 0xC001000 );
-	static uint32_t* pendingRegister2 = reinterpret_cast<uint32_t*>( 0xC001004 );
-	static uint32_t* enableRegister1 = reinterpret_cast<uint32_t*>( 0xC002000 );
-	static uint32_t* enableRegister2 = reinterpret_cast<uint32_t*>( 0xC002004 );
-
-
 	while ( false == hwRegOps::compareBits( timerRegister->pwmCfg, cmp0IrqMask )  );
 	hwRegOps::clearBits( timerRegister->pwmCfg, cmp0IrqMask );
 }
