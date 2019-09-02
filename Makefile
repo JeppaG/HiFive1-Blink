@@ -26,7 +26,9 @@ G++ = $(GCC_PATH)riscv32-unknown-elf-g++
 LD = $(GCC_PATH)riscv32-unknown-elf-g++
 
 G++_FLAGS = -O0 -g -c -fno-exceptions -fno-unwind-tables -MD
-LD_FLAGS = -g -ffreestanding -Wl,--gc-sections -nostartfiles -fno-exceptions -fno-unwind-tables -fno-use-cxa-atexit -Wl,-T,riscv32_sifive_e.ld -Xlinker -Map=add.map
+LD_FLAGS = -g -ffreestanding -Wl,--gc-sections \
+           -nostartfiles -fno-exceptions -fno-unwind-tables -fno-use-cxa-atexit \
+           -Wl,-T,riscv32_sifive_e.ld -Xlinker -Map=$(BUILD_PATH)/blink.map
         
 # Source file list
 
@@ -50,8 +52,8 @@ INCLUDE_PATH = \
   -I driver/inc \
   -I application/inc \
   
--mkdir $(BUILD_PATH) 2>/dev/null;  
--mkdir $(OBJ_PATH) 2>/dev/null;  
+$(shell mkdir -p $(BUILD_PATH))
+$(shell mkdir -p $(OBJ_PATH))
   
 OBJ = $(APP_SOURCE:.cpp=.o) \
       $(DRIVER_SOURCE:.cpp=.o) \
@@ -78,4 +80,4 @@ clean :
 
 debug : ; $(info $$(addprefix $(OBJ_PATH), $(OBJ)) is [$(addprefix $(OBJ_PATH), $(OBJ))])
 	
-all : add.elf
+all : $(BUILD_PATH)/blink.elf

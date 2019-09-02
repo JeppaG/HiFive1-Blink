@@ -71,8 +71,6 @@ void Interrupt::enable ()
 	extern void _enable_plic_interrupt( uint32_t interruptNumber );
 
 	_enable_plic_interrupt ( source );
-//	uint32_t* enableReg = reinterpret_cast<uint32_t*>( 0xc002004 );
-//	*enableReg = 0x1000;
 	priority[source] = 7;
 }
 

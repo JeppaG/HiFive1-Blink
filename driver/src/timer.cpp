@@ -75,20 +75,7 @@ void Timer::waitFor1MsTimeOut()
 
 
 	while ( false == hwRegOps::compareBits( timerRegister->pwmCfg, cmp0IrqMask )  );
-	uint32_t pwmCfg1 = timerRegister->pwmCfg;
-	uint32_t pending1_1 = *pendingRegister1;
-	uint32_t pending2_1 = *pendingRegister2;
-	uint32_t enable1_1 = *enableRegister1;
-	uint32_t enable2_1 = *enableRegister2;
-	uint32_t claim1 = *claimRegister;
 	hwRegOps::clearBits( timerRegister->pwmCfg, cmp0IrqMask );
-	uint32_t pwmCfg2 = timerRegister->pwmCfg;
-	uint32_t pending1_2 = *pendingRegister1;
-	uint32_t pending2_2 = *pendingRegister2;
-	uint32_t enable1_2 = *enableRegister1;
-	uint32_t enable2_2 = *enableRegister2;
-	uint32_t claim2 = *claimRegister;
-	*claimRegister = 44;
 }
 
 /* Interrupt handlers */

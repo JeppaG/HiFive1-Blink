@@ -37,8 +37,6 @@ int main ()
 {
 	Interrupt::init();
 	Interrupt::setThreshold( 0 );
-	int a = 4;
-	int b = 12;
 	int count = 0;
 	clock.usePllWithHfXosc();
 	timer1->setUp1MsTimeBase();
@@ -53,7 +51,6 @@ int main ()
 	gpio->set( Gpio::pin22 );
 	while ( 1 )
 	{
-//		int c = a + b;
 //		if ( 500 == count )
 //		{
 //			gpio->clear( Gpio::pin21 );
