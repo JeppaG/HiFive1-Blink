@@ -72,7 +72,7 @@ $(BUILD_PATH)/blink.elf : $(addprefix $(OBJ_PATH)/, $(OBJ))
 	$(LD) $(LD_FLAGS) $^ -o$@
 		 
 clean :
-	rm $(BUILD_PATH)/add.elf $(OBJ_PATH)/*.*
+	rm $(BUILD_PATH)/blink.elf $(OBJ_PATH)/*.*
 	
 -include $(addprefix $(OBJ_PATH), $(OBJ:.o=.d))
     
