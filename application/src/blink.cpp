@@ -59,7 +59,7 @@ int main ()
 //			count = 0;
 //			gpio->set( Gpio::pin21 );
 //		}
-//		timer2->waitFor1MsTimeOut();
+//		timer1->waitFor1MsTimeOut();
 //		count++;
 	}
 	return 0;

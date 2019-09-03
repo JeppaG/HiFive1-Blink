@@ -97,7 +97,7 @@ void Interrupt::defaultHandler()
 /*** Interrupt Vector Table ***/
 extern "C"
 {
-	Interrupt::handlerType interruptVectorTable[Interrupt::numberOfSources] = {
+	extern const Interrupt::handlerType interruptVectorTable[Interrupt::numberOfSources] = {
 		/* notUsed  */ Interrupt::defaultHandler,
 		/* watchdog */ Interrupt::defaultHandler,
 		/* rtc      */ Interrupt::defaultHandler,
