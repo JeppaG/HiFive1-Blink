@@ -58,13 +58,13 @@ private:
 	static constexpr uint32_t hfXoscEnableBit = 0x40000000u;
 	static constexpr uint32_t hfXoscReadyBit  = 0x80000000u;
 
-	/* The values of the PLL dividers are set up so that the output coreclk is run at 256 MHz
-		 * with input from the 16 MHz hfXosc clock. To fulfil the conditions given in the FE310-G000
-		 * manual, this means that
-		 * - the input divider must be set to divide by 2 so that refr becomes 8 MHz, i.e pllr = 1,
-		 * - the vco multiplier must be set to multiply with 64 so that vco becomes 512 MHz, i.e. pllf = 31, since 2*(1+31) = 64,
-		 * - the output divider must be set to 2, so tht the output becomes 265 MHz, i.e. pllq = = 1.
-		 */
+	/* The values of the PLL dividers are set up so that the output core_clk is run at 256 MHz
+     * with input from the 16 MHz hfXosc clock. To fulfil the conditions given in the FE310-G000
+     * manual, this means that
+     * - the input divider must be set to divide by 2 so that refr becomes 8 MHz, i.e pllr = 1,
+     * - the vco multiplier must be set to multiply with 64 so that vco becomes 512 MHz, i.e. pllf = 31, since 2*(1+31) = 64,
+     * - the output divider must be set to 2, so that the output becomes 2556 MHz, i.e. pllq = = 1.
+     */
 	static constexpr uint32_t pllSetUp = 0x000025F1u;
 	                                  /* 0000 0000 0000 0000 0010 0101 1111 0001
 				                       *                       |  |||| ||||   ||

@@ -146,7 +146,23 @@ _enable_interrupt:
 .align 2                           /* This aligns the address to an even 2^n byte, so n=2 gives word alignment */
 trapvector:
 	.cfi_startproc
-		/* Check if the interrupt bit is set */
+		addi sp, sp, -64            /* Save ALL caller saved rgisters on the stack.  */
+		sw ra, 64(sp)               /* Since the user context is not aware that the  */
+		sw t0, 60(sp)				/* interrupt is executing, it has no way of preserving */
+		sw t1, 56(sp)               /* its registers, and the interrupt context doesn't  */
+		sw t2, 52(sp)               /* know which registers are in use in the user context */
+		sw a0, 48(sp)
+		sw a1, 44(sp)
+		sw a2, 40(sp)
+		sw a3, 36(sp)
+		sw a4, 32(sp)
+		sw a5, 28(sp)
+		sw a6, 24(sp)
+		sw a7, 20(sp)
+		sw t3, 16(sp)
+		sw t4, 12(sp)
+		sw t5, 8(sp)
+		sw t6, 4(sp)
 		csrrc t0, mcause, zero      /* Read the mcaus register into t0 */
 		bgez t0, dispatch_exception /* Go on to dispatch an exception. Interrupts have mcause < 0 */
 		slli t0, t0, 2              /* This is an interrupt. Use t0 as index for the interrupt vector table */
@@ -154,6 +170,23 @@ trapvector:
 		add t0, t0, t1              /* Pick the correct address for the handler in the vector table */
         lw t0, (t0)
 		jalr t0                     /* Call the interrupt handler pointed to by the vector table */
+		lw ra, 64(sp)               /* Pop ALL caller saved registers before returning from the */
+		lw t0, 60(sp)				/* interrupt */
+		lw t1, 56(sp)
+		lw t2, 52(sp)
+		lw a0, 48(sp)
+		lw a1, 44(sp)
+		lw a2, 40(sp)
+		lw a3, 36(sp)
+		lw a4, 32(sp)
+		lw a5, 28(sp)
+		lw a6, 24(sp)
+		lw a7, 20(sp)
+		lw t3, 16(sp)
+		lw t4, 12(sp)
+		lw t5, 8(sp)
+		lw t6, 4(sp)
+		addi sp, sp, 64
 		mret                        /* Return from interrupt */
 	.cfi_endproc
 
