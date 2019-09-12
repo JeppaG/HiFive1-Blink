@@ -95,8 +95,8 @@ private:
       volatile uint32_t highIrqPending;   /* Base address + 44 */
       volatile uint32_t lowIrqEnable;     /* Base address + 48 */
       volatile uint32_t lowIrqPending;    /* Base address + 52 */
-      volatile uint32_t ioFunctionSelect; /* Base address + 56 */
-      volatile uint32_t ioFunctionEnable; /* Base address + 60 */
+      volatile uint32_t ioFunctionEnable; /* Base address + 56 */
+      volatile uint32_t ioFunctionSelect; /* Base address + 60 */
       volatile uint32_t outputXor;        /* Bade address + 64 */
 
 	} gpioRegisterType;
